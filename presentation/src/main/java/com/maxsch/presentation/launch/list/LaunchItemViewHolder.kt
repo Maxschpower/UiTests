@@ -16,7 +16,7 @@ class LaunchItemViewHolder(
     fun bind(item: Launch) {
         containerView.launchTitle.text = item.mission?.name
         containerView.launchDescription.text = item.site
-        containerView.missionPatch.load(item.mission?.missionPatch) {
+        containerView.missionPatch.load(R.drawable.ic_placeholder) {
             placeholder(R.drawable.ic_placeholder)
         }
         containerView.setOnClickListener {

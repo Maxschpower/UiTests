@@ -6,7 +6,6 @@ plugins {
 
 apollo {
     generateKotlinModels.set(true)
-    generateModelBuilder = true
 }
 
 android {

@@ -12,8 +12,5 @@ class LoginRepositoryImpl(
 ) : LoginRepository {
 
     override fun login(email: String): Single<String> =
-        apolloClient.rxMutate(LoginMutation(Input.fromNullable(email)))
-            .map {
-                it.data?.login
-            }
+        Single.just("email")
 }
