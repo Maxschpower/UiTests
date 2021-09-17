@@ -1,0 +1,5 @@
+<resources>
+    <string name="cancel_booking">Отменить полет</string>
+    <string name="book_now">Записаться на полет</string>
+    <string name="login_error">Введите валидную почту</string>
+</resources>
