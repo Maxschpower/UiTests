@@ -1,6 +1,7 @@
 package com.maxsch.uitests.test
 
-import androidx.test.espresso.action.CloseKeyboardAction
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import com.maxsch.presentation.MainActivity
@@ -9,8 +10,9 @@ import com.maxsch.uitests.screen.LaunchListScreen
 import com.maxsch.uitests.screen.LoginScreen
 import org.junit.Rule
 import org.junit.Test
+import org.koin.core.component.KoinComponent
 
-class LoginScreenTest : TestCase() {
+class LoginScreenTest : TestCase(), KoinComponent {
 
     @Rule
     @JvmField
@@ -20,22 +22,29 @@ class LoginScreenTest : TestCase() {
 
     @Test
     fun positiveLoginTest() {
-        run {
+        before {
+        }.after {
+            activityTestRule.scenario.onActivity {
+                val prefs: SharedPreferences =
+                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.clear()
+                editor.commit()
+            }
+        }.run {
             step("enter mail") {
                 LoginScreen {
                     loginEditText {
                         typeText("tnnbbpe@gmail.com")
-                        act {
-                            CloseKeyboardAction()
-                        }
                     }
+
+                    closeSoftKeyboard()
                 }
             }
 
             step("login") {
                 LoginScreen {
                     loginButton {
-                        scrollTo()
                         click()
                     }
                 }
@@ -52,14 +61,25 @@ class LoginScreenTest : TestCase() {
     @Test
     fun wrongEmailInputErrorTest() {
         before {
-
         }.after {
-
+            activityTestRule.scenario.onActivity {
+                val prefs: SharedPreferences =
+                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.clear()
+                editor.commit()
+            }
         }.run {
             step("enter mail") {
                 LoginScreen {
                     loginEditText {
                         typeText("tnnbbpe")
+                    }
+
+                    closeSoftKeyboard()
+
+                    loginButton {
+                        click()
                     }
                 }
             }

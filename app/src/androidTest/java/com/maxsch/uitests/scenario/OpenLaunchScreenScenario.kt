@@ -21,7 +21,6 @@ class OpenLaunchScreenScenario : Scenario() {
         step("login") {
             LoginScreen {
                 loginButton {
-                    scrollTo()
                     click()
                 }
             }

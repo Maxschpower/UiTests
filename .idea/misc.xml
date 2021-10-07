@@ -8,7 +8,10 @@
         <entry key="presentation/src/main/res/layout/fragment_launch_details.xml" value="0.36203703703703705" />
         <entry key="presentation/src/main/res/layout/fragment_launch_list.xml" value="0.396875" />
         <entry key="presentation/src/main/res/layout/fragment_login.xml" value="0.39076923076923076" />
+        <entry key="presentation/src/main/res/layout/launch_description_view.xml" value="0.396875" />
         <entry key="presentation/src/main/res/layout/launch_list_item.xml" value="0.396875" />
+        <entry key="presentation/src/main/res/layout/launch_view.xml" value="0.396875" />
+        <entry key="presentation/src/main/res/layout/site_description_view.xml" value="0.39076923076923076" />
       </map>
     </option>
   </component>

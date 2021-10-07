@@ -26,30 +26,13 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_placeholder" />
 
-        <TextView
-            android:id="@+id/launchTitle"
+        <com.maxsch.presentation.launch.list.LaunchDescriptionView
+            android:id="@+id/launchDescriptionView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="#000000"
-            android:textSize="18sp"
+            android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/missionPatch"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Тестовая надпись. Тут будет название площадки для запуска ракеты" />
-
-        <TextView
-            android:id="@+id/launchDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/missionPatch"
-            app:layout_constraintTop_toBottomOf="@id/launchTitle"
-            tools:text="Тестовая надпись. Тут будет описание площадки для запуска ракеты" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

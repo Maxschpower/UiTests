@@ -14,13 +14,15 @@ class LaunchItemViewHolder(
 ) : LayoutContainer, RecyclerView.ViewHolder(containerView) {
 
     fun bind(item: Launch) {
-        containerView.launchTitle.text = item.mission?.name
-        containerView.launchDescription.text = item.site
-        containerView.missionPatch.load(R.drawable.ic_placeholder) {
-            placeholder(R.drawable.ic_placeholder)
-        }
-        containerView.setOnClickListener {
-            clickListener(item)
+        with(containerView) {
+            launchDescriptionView.setTitle(item.mission?.name)
+            launchDescriptionView.setDescription(item.site)
+            missionPatch.load(R.drawable.ic_placeholder) {
+                placeholder(R.drawable.ic_placeholder)
+            }
+            setOnClickListener {
+                clickListener(item)
+            }
         }
     }
 }

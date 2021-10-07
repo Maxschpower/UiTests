@@ -2,6 +2,7 @@ package com.maxsch.presentation.launch.details
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import coil.load
@@ -35,6 +36,7 @@ class LaunchDetailsFragment : Fragment(R.layout.fragment_launch_details) {
             if (it.isBooked) {
                 bookButton.setOnClickListener { viewModel.cancelTrip() }
                 bookButton.text = getString(R.string.cancel_booking)
+                Toast.makeText(context, "You've booked the flight!", Toast.LENGTH_SHORT).show()
             } else {
                 bookButton.setOnClickListener { viewModel.bookTrip() }
                 bookButton.text = getString(R.string.book_now)

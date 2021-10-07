@@ -1,5 +1,7 @@
 package com.maxsch.uitests.test
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import com.maxsch.presentation.MainActivity
@@ -8,18 +10,28 @@ import com.maxsch.uitests.screen.LaunchDetailsScreen
 import com.maxsch.uitests.screen.LaunchListScreen
 import org.junit.Rule
 import org.junit.Test
+import org.koin.core.component.KoinComponent
 
-class LaunchListScreenTest : TestCase() {
+
+class LaunchListScreenTest : TestCase(), KoinComponent {
 
     @Rule
     @JvmField
-    val activityTestRule = ActivityScenarioRule(
-        MainActivity::class.java
-    )
+    val activityTestRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun screenTest() {
-        run {
+        before {
+
+        }.after {
+            activityTestRule.scenario.onActivity {
+                val prefs: SharedPreferences =
+                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.clear()
+                editor.commit()
+            }
+        }.run {
             step("open launch list screen") {
                 scenario(OpenLaunchScreenScenario())
             }
@@ -28,11 +40,9 @@ class LaunchListScreenTest : TestCase() {
                 LaunchListScreen {
                     recycler {
                         childAt<LaunchListScreen.Item>(0) {
-                            title {
-                                hasText("Starlink-15 (v1.0)")
-                            }
                             description {
-                                hasText("CCAFS SLC 40")
+                                hasTitle("first mission")
+                                hasDescription("first site")
                             }
                         }
                     }
@@ -43,7 +53,17 @@ class LaunchListScreenTest : TestCase() {
 
     @Test
     fun recyclerItemsIsClickableTest() {
-        run {
+        before {
+
+        }.after {
+            activityTestRule.scenario.onActivity {
+                val prefs: SharedPreferences =
+                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.clear()
+                editor.commit()
+            }
+        }.run {
             step("open launch list screen") {
                 scenario(OpenLaunchScreenScenario())
             }

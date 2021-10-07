@@ -4,9 +4,9 @@ import android.view.View
 import com.kaspersky.kaspresso.screens.KScreen
 import com.maxsch.presentation.launch.list.LaunchListFragment
 import com.maxsch.uitests.R
+import com.maxsch.uitests.view.KLaunchDescriptionView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
-import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 
 object LaunchListScreen : KScreen<LaunchListScreen>() {
@@ -23,7 +23,8 @@ object LaunchListScreen : KScreen<LaunchListScreen>() {
     })
 
     class Item(parent: Matcher<View>) : KRecyclerItem<Item>(parent) {
-        val title: KTextView = KTextView(parent) { withId(R.id.launchTitle) }
-        val description: KTextView = KTextView(parent) { withId(R.id.launchDescription) }
+        val description: KLaunchDescriptionView = KLaunchDescriptionView(parent) {
+            withId(R.id.launchDescriptionView)
+        }
     }
 }
