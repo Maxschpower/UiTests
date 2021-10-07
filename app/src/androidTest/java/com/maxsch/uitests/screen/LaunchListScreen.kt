@@ -11,10 +11,8 @@ import org.hamcrest.Matcher
 
 object LaunchListScreen : KScreen<LaunchListScreen>() {
 
-    override val layoutId: Int
-        get() = R.layout.fragment_launch_list
-    override val viewClass: Class<*>
-        get() = LaunchListFragment::class.java
+    override val layoutId = R.layout.fragment_launch_list
+    override val viewClass = LaunchListFragment::class.java
 
     val recycler: KRecyclerView = KRecyclerView({
         withId(R.id.launchList)

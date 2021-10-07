@@ -1,19 +1,16 @@
 package com.maxsch.uitests.test
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import com.maxsch.presentation.MainActivity
+import com.maxsch.uitests.BaseTestCase
 import com.maxsch.uitests.scenario.OpenLaunchScreenScenario
 import com.maxsch.uitests.screen.LaunchDetailsScreen
 import com.maxsch.uitests.screen.LaunchListScreen
 import org.junit.Rule
 import org.junit.Test
-import org.koin.core.component.KoinComponent
 
 
-class LaunchListScreenTest : TestCase(), KoinComponent {
+class LaunchListScreenTest : BaseTestCase() {
 
     @Rule
     @JvmField
@@ -23,14 +20,10 @@ class LaunchListScreenTest : TestCase(), KoinComponent {
     fun screenTest() {
         before {
 
+
         }.after {
-            activityTestRule.scenario.onActivity {
-                val prefs: SharedPreferences =
-                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
-                val editor = prefs.edit()
-                editor.clear()
-                editor.commit()
-            }
+            testsHelper.clearAuthToken()
+
         }.run {
             step("open launch list screen") {
                 scenario(OpenLaunchScreenScenario())
@@ -41,8 +34,8 @@ class LaunchListScreenTest : TestCase(), KoinComponent {
                     recycler {
                         childAt<LaunchListScreen.Item>(0) {
                             description {
-                                hasTitle("first mission")
-                                hasDescription("first site")
+                                hasTitle("Starlink-15 (v1.0)")
+                                hasDescription("CCAFS SLC 40")
                             }
                         }
                     }
@@ -55,14 +48,10 @@ class LaunchListScreenTest : TestCase(), KoinComponent {
     fun recyclerItemsIsClickableTest() {
         before {
 
+
         }.after {
-            activityTestRule.scenario.onActivity {
-                val prefs: SharedPreferences =
-                    it.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
-                val editor = prefs.edit()
-                editor.clear()
-                editor.commit()
-            }
+            testsHelper.clearAuthToken()
+
         }.run {
             step("open launch list screen") {
                 scenario(OpenLaunchScreenScenario())

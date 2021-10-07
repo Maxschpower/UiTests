@@ -28,9 +28,9 @@ class LaunchDetailsFragment : Fragment(R.layout.fragment_launch_details) {
             site.text = it.site
             missionName.text = it.mission?.name
             rocketName.text = "\uD83D\uDE80 ${it.rocket?.name} ${it.rocket?.type}"
-            missionPatch.load(it.mission?.missionPatch) {
-                placeholder(R.drawable.ic_placeholder)
-            }
+//            missionPatch.load(it.mission?.missionPatch) {
+//                placeholder(R.drawable.ic_placeholder)
+//            }
             progressBar.isVisible = false
             content.isVisible = true
             if (it.isBooked) {

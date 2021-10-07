@@ -6,7 +6,7 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "UiTests"
+rootProject.name = "STB"
 include ':app'
 include ':domain'
 include ':presentation'
